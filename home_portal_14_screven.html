@@ -1,0 +1,239 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+.rn{font-family:var(--font-sans);}
+.hero{border-radius:16px;margin-bottom:1.5rem;overflow:hidden;position:relative;}
+.hero-img{width:100%;height:220px;object-fit:cover;object-position:center 60%;display:block;}
+.hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.45);border-radius:16px;}
+.hero-content{position:absolute;inset:0;padding:1.25rem 1.5rem;display:flex;flex-direction:column;justify-content:space-between;}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.25);border-radius:100px;padding:4px 12px;font-size:11px;color:#fff;width:fit-content;}
+.hero-tag i{font-size:12px;color:#5DCAA5;}
+.hero-title{font-size:24px;font-weight:500;color:#fff;line-height:1.2;margin-top:8px;}
+.hero-sub{font-size:12px;color:rgba(255,255,255,0.65);margin-top:4px;}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
+.hero-stat{background:rgba(0,0,0,0.45);border:0.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:8px 10px;}
+.hero-stat-val{font-size:16px;font-weight:500;color:#fff;}
+.hero-stat-val.teal{color:#5DCAA5;}
+.hero-stat-val.orange{color:#E85D2F;}
+.hero-stat-label{font-size:10px;color:rgba(255,255,255,0.55);margin-top:1px;}
+.nav-tabs{display:flex;gap:2px;margin-bottom:1.5rem;background:var(--color-background-secondary);border-radius:10px;padding:4px;}
+.nav-tab{flex:1;padding:7px 4px;font-size:11px;text-align:center;cursor:pointer;border:none;background:none;color:var(--color-text-secondary);border-radius:8px;transition:all 0.15s;font-family:var(--font-sans);}
+.nav-tab.active{background:var(--color-background-primary);color:var(--color-text-primary);font-weight:500;border:0.5px solid var(--color-border-tertiary);}
+.nav-tab i{display:block;font-size:15px;margin-bottom:2px;}
+.section{display:none;}
+.section.active{display:block;}
+.sec-heading{font-size:18px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;}
+.sec-sub{font-size:13px;color:var(--color-text-secondary);margin-bottom:1.25rem;}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:1.25rem;}
+.info-card{background:#1a1a1a;border-radius:12px;padding:1rem;}
+.info-card-label{font-size:11px;color:#666;margin-bottom:4px;}
+.info-card-val{font-size:18px;font-weight:500;color:#fff;}
+.info-card-val.teal{color:#5DCAA5;}
+.info-card-val.orange{color:#E85D2F;}
+.white-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:14px;padding:1.25rem;margin-bottom:1rem;}
+.wc-title{font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:1rem;display:flex;align-items:center;gap:8px;}
+.wc-title i{color:#5DCAA5;font-size:17px;}
+.pill{display:inline-flex;align-items:center;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:500;}
+.pill-done{background:#E1F5EE;color:#085041;}
+.pill-pending{background:#FAEEDA;color:#633806;}
+.pill-urgent{background:#FCEBEB;color:#791F1F;}
+.check-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:0.5px solid var(--color-border-tertiary);cursor:pointer;}
+.check-row:last-child{border-bottom:none;}
+.check-row input{accent-color:#5DCAA5;width:15px;height:15px;cursor:pointer;}
+.check-label{font-size:13px;color:var(--color-text-primary);flex:1;}
+.check-label.done{text-decoration:line-through;color:var(--color-text-secondary);}
+.tl{padding-left:20px;position:relative;}
+.tl::before{content:'';position:absolute;left:6px;top:0;bottom:0;width:1px;background:var(--color-border-tertiary);}
+.tl-item{position:relative;padding-bottom:1.25rem;}
+.tl-dot{position:absolute;left:-17px;top:4px;width:9px;height:9px;border-radius:50%;border:2px solid #5DCAA5;background:var(--color-background-primary);}
+.tl-dot.done{background:#5DCAA5;}
+.tl-dot.future{border-color:var(--color-border-secondary);}
+.tl-date{font-size:11px;color:var(--color-text-secondary);}
+.tl-event{font-size:14px;font-weight:500;color:var(--color-text-primary);}
+.tl-note{font-size:12px;color:var(--color-text-secondary);margin-top:1px;}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;}
+.ccard{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:12px;padding:1rem;}
+.cavatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;margin-bottom:8px;}
+.cname{font-size:13px;font-weight:500;color:var(--color-text-primary);}
+.crole{font-size:11px;color:var(--color-text-secondary);margin-bottom:6px;}
+.cphone{font-size:12px;color:#1D9E75;}
+.doc-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:0.5px solid var(--color-border-tertiary);}
+.doc-row:last-child{border-bottom:none;}
+.doc-ico{width:32px;height:32px;background:#E1F5EE;border-radius:8px;display:flex;align-items:center;justify-content:center;}
+.doc-ico i{font-size:15px;color:#0F6E56;}
+.doc-name{font-size:13px;color:var(--color-text-primary);flex:1;}
+.cost-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:13px;}
+.cost-row:last-child{border-bottom:none;font-weight:500;font-size:14px;}
+.cost-lbl{color:var(--color-text-secondary);}
+.pbar{height:5px;background:var(--color-background-secondary);border-radius:100px;overflow:hidden;margin-top:6px;}
+.pfill{height:100%;background:#1D9E75;border-radius:100px;}
+.teal-btn{background:#1D9E75;color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:13px;cursor:pointer;font-family:var(--font-sans);}
+.teal-btn:hover{background:#0F6E56;}
+.cash-badge{display:inline-flex;align-items:center;gap:5px;background:#E1F5EE;border:0.5px solid #5DCAA5;border-radius:100px;padding:4px 12px;font-size:12px;color:#085041;font-weight:500;margin-bottom:1rem;}
+</style>
+
+<div class="rn">
+  <div class="hero">
+    <img class="hero-img" src="/mnt/user-data/uploads/80e7647c568b9739fb7024c6f5f969e8-sc_1920_1280.webp" alt="14 Screven St NE, Atlanta GA">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div>
+        <div class="hero-tag"><i class="ti ti-home" aria-hidden="true"></i> 14 Screven St NE · Atlanta, GA</div>
+        <div class="hero-title">Your home closing,<br>under control.</div>
+        <div class="hero-sub">Est. closing date · June 28, 2026</div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-val orange">27</div><div class="hero-stat-label">Days left</div></div>
+        <div class="hero-stat"><div class="hero-stat-val">7/12</div><div class="hero-stat-label">Tasks done</div></div>
+        <div class="hero-stat"><div class="hero-stat-val">5/8</div><div class="hero-stat-label">Docs in</div></div>
+        <div class="hero-stat"><div class="hero-stat-val teal">Cash</div><div class="hero-stat-label">Purchase</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="switchTab('overview')"><i class="ti ti-layout-dashboard" aria-hidden="true"></i>Overview</button>
+    <button class="nav-tab" onclick="switchTab('checklist')"><i class="ti ti-checklist" aria-hidden="true"></i>Checklist</button>
+    <button class="nav-tab" onclick="switchTab('timeline')"><i class="ti ti-calendar" aria-hidden="true"></i>Timeline</button>
+    <button class="nav-tab" onclick="switchTab('contacts')"><i class="ti ti-users" aria-hidden="true"></i>Contacts</button>
+    <button class="nav-tab" onclick="switchTab('docs')"><i class="ti ti-folder" aria-hidden="true"></i>Docs</button>
+    <button class="nav-tab" onclick="switchTab('costs')"><i class="ti ti-coin" aria-hidden="true"></i>Costs</button>
+  </div>
+
+  <div id="overview" class="section active">
+    <div class="sec-heading">Overview</div>
+    <div class="sec-sub">Here's where things stand today.</div>
+    <div class="cash-badge"><i class="ti ti-circle-check" aria-hidden="true"></i> Cash purchase · No mortgage needed</div>
+    <div class="card-grid">
+      <div class="info-card"><div class="info-card-label">Purchase price</div><div class="info-card-val">$385k</div></div>
+      <div class="info-card"><div class="info-card-label">Closing costs</div><div class="info-card-val orange">$6.2k</div></div>
+      <div class="info-card"><div class="info-card-label">Total cash needed</div><div class="info-card-val teal">$391.2k</div></div>
+    </div>
+    <div class="white-card">
+      <div class="wc-title"><i class="ti ti-chart-line" aria-hidden="true"></i>Progress tracker</div>
+      <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:4px;">Closing checklist</div>
+      <div class="pbar"><div class="pfill" style="width:58%"></div></div>
+      <div style="font-size:11px;color:var(--color-text-secondary);margin-top:3px;margin-bottom:12px;">58% · 5 items remaining</div>
+      <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:4px;">Document submission</div>
+      <div class="pbar"><div class="pfill" style="width:62%"></div></div>
+      <div style="font-size:11px;color:var(--color-text-secondary);margin-top:3px;">62% · 3 docs still needed</div>
+    </div>
+    <div class="white-card">
+      <div class="wc-title"><i class="ti ti-alert-circle" aria-hidden="true"></i>Needs attention</div>
+      <div class="doc-row"><div class="doc-ico"><i class="ti ti-file-alert" aria-hidden="true"></i></div><div class="doc-name">Homeowner's insurance binder</div><span class="pill pill-urgent">Urgent</span></div>
+      <div class="doc-row"><div class="doc-ico"><i class="ti ti-file-dollar" aria-hidden="true"></i></div><div class="doc-name">Proof of funds letter</div><span class="pill pill-urgent">Urgent</span></div>
+      <div class="doc-row"><div class="doc-ico"><i class="ti ti-walk" aria-hidden="true"></i></div><div class="doc-name">Schedule final walkthrough</div><span class="pill pill-pending">Pending</span></div>
+    </div>
+    <button class="teal-btn" onclick="sendPrompt('What are the most important things I should do right now for a cash home purchase closing?')">What should I do next? ↗</button>
+  </div>
+
+  <div id="checklist" class="section">
+    <div class="sec-heading">Closing checklist</div>
+    <div class="sec-sub">Tap any item to mark it complete.</div>
+    <div class="white-card">
+      <div id="tasks"></div>
+    </div>
+    <button class="teal-btn" style="margin-top:4px;" onclick="sendPrompt('What other tasks should I add to my cash purchase home closing checklist?')">Suggest more tasks ↗</button>
+  </div>
+
+  <div id="timeline" class="section">
+    <div class="sec-heading">Closing timeline</div>
+    <div class="sec-sub">Key milestones from offer to keys.</div>
+    <div class="white-card">
+      <div class="tl">
+        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">May 2, 2026</div><div class="tl-event">Offer accepted</div><div class="tl-note">Purchase price: $385,000 · Cash offer</div></div>
+        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">May 5, 2026</div><div class="tl-event">Earnest money deposited</div><div class="tl-note">$5,000 held in escrow</div></div>
+        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">May 12, 2026</div><div class="tl-event">Home inspection complete</div><div class="tl-note">3 minor repairs negotiated</div></div>
+        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">May 18, 2026</div><div class="tl-event">Appraisal completed</div><div class="tl-note">Appraised at $390,000 ✓</div></div>
+        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">May 22, 2026</div><div class="tl-event">Proof of funds submitted</div><div class="tl-note">Accepted by seller's agent</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">June 20, 2026</div><div class="tl-event">Clear to close</div><div class="tl-note">Title search in progress</div></div>
+        <div class="tl-item"><div class="tl-dot future"></div><div class="tl-date">June 26, 2026</div><div class="tl-event">Final walkthrough</div><div class="tl-note">Not yet scheduled</div></div>
+        <div class="tl-item"><div class="tl-dot future"></div><div class="tl-date">June 28, 2026</div><div class="tl-event">Closing day</div><div class="tl-note">Title company · 10:00 AM</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="contacts" class="section">
+    <div class="sec-heading">Your team</div>
+    <div class="sec-sub">Everyone you need, in one place.</div>
+    <div class="contact-grid">
+      <div class="ccard"><div class="cavatar" style="background:#E6F1FB;color:#185FA5;">SR</div><div class="cname">Sarah Reynolds</div><div class="crole">Buyer's agent</div><div class="cphone">(404) 555-0192</div></div>
+      <div class="ccard"><div class="cavatar" style="background:#FAEEDA;color:#633806;">KL</div><div class="cname">Karen Liu</div><div class="crole">Title attorney</div><div class="cphone">(404) 555-0318</div></div>
+      <div class="ccard"><div class="cavatar" style="background:#FBEAF0;color:#72243E;">DP</div><div class="cname">Dave Patton</div><div class="crole">Home inspector</div><div class="cphone">(404) 555-0455</div></div>
+      <div class="ccard"><div class="cavatar" style="background:#EEEDFE;color:#3C3489;">TC</div><div class="cname">TrustTitle Co.</div><div class="crole">Title company</div><div class="cphone">(404) 555-0580</div></div>
+      <div class="ccard"><div class="cavatar" style="background:#E1F5EE;color:#085041;">AH</div><div class="cname">AllState Home</div><div class="crole">Insurance agent</div><div class="cphone">(404) 555-0631</div></div>
+    </div>
+  </div>
+
+  <div id="docs" class="section">
+    <div class="sec-heading">Documents</div>
+    <div class="sec-sub">Track what's submitted and what's still needed.</div>
+    <div class="white-card">
+      <div class="doc-row"><div class="doc-ico"><i class="ti ti-file-check" aria-hidden="true"></i></div><div class="doc-name">Purchase agreement</div><span class="pill pill-done">Submitted</span></div>
+      <div class="doc-row"><div class="doc-ico"><i class="ti ti-file-check" aria-hidden="true"></i></div><div class="doc-name">Proof of funds letter</div><span class="pill pill-done">Submitted</span></div>
+      <div class="doc-row"><div class="doc-ico"><i class="ti ti-file-check" aria-hidden="true"></i></div><div class="doc-name">Inspection report</div><span class="pill pill-done">Submitted</span></div>
+      <div class="doc-row"><div class="doc-ico"><i class="ti ti-file-check" aria-hidden="true"></i></div><div class="doc-name">Earnest money receipt</div><span class="pill pill-done">Submitted</span></div>
+      <div class="doc-row"><div class="doc-ico"><i class="ti ti-file-check" aria-hidden="true"></i></div><div class="doc-name">Appraisal report</div><span class="pill pill-done">Submitted</span></div>
+      <div class="doc-row"><div class="doc-ico"><i class="ti ti-file-alert" aria-hidden="true"></i></div><div class="doc-name">Homeowner's insurance binder</div><span class="pill pill-urgent">Needed</span></div>
+      <div class="doc-row"><div class="doc-ico"><i class="ti ti-file-alert" aria-hidden="true"></i></div><div class="doc-name">Title commitment letter</div><span class="pill pill-pending">Pending</span></div>
+      <div class="doc-row"><div class="doc-ico"><i class="ti ti-file-alert" aria-hidden="true"></i></div><div class="doc-name">Photo ID (all buyers)</div><span class="pill pill-pending">Needed</span></div>
+    </div>
+    <button class="teal-btn" onclick="sendPrompt('What documents do I need at closing for a cash home purchase?')">What do I need at closing? ↗</button>
+  </div>
+
+  <div id="costs" class="section">
+    <div class="sec-heading">Closing costs</div>
+    <div class="sec-sub">Cash purchase — no loan fees or mortgage costs.</div>
+    <div class="cash-badge"><i class="ti ti-circle-check" aria-hidden="true"></i> Saving ~$4,000+ vs. financed purchase</div>
+    <div class="card-grid">
+      <div class="info-card"><div class="info-card-label">Purchase price</div><div class="info-card-val">$385k</div></div>
+      <div class="info-card"><div class="info-card-label">Closing costs</div><div class="info-card-val orange">$6.2k</div></div>
+      <div class="info-card"><div class="info-card-label">Total cash needed</div><div class="info-card-val teal">$391.2k</div></div>
+    </div>
+    <div class="white-card">
+      <div class="wc-title"><i class="ti ti-receipt" aria-hidden="true"></i>Cost breakdown</div>
+      <div class="cost-row"><span class="cost-lbl">Title insurance</span><span>$1,800</span></div>
+      <div class="cost-row"><span class="cost-lbl">Attorney fees</span><span>$900</span></div>
+      <div class="cost-row"><span class="cost-lbl">Home inspection</span><span>$425</span></div>
+      <div class="cost-row"><span class="cost-lbl">Appraisal fee</span><span>$550</span></div>
+      <div class="cost-row"><span class="cost-lbl">Homeowner's insurance (1yr)</span><span>$1,200</span></div>
+      <div class="cost-row"><span class="cost-lbl">Recording fees</span><span>$150</span></div>
+      <div class="cost-row"><span class="cost-lbl">Miscellaneous</span><span>$375</span></div>
+      <div class="cost-row"><span style="color:var(--color-text-primary);font-weight:500;">Total closing costs</span><span style="color:#1D9E75;font-weight:500;">$6,200</span></div>
+    </div>
+    <button class="teal-btn" onclick="sendPrompt('How can I reduce closing costs on a cash home purchase?')">How to reduce costs ↗</button>
+  </div>
+</div>
+
+<script>
+const tasks=[
+  {t:'Submit purchase agreement',done:true},
+  {t:'Deposit earnest money',done:true},
+  {t:'Submit proof of funds',done:true},
+  {t:'Complete home inspection',done:true},
+  {t:'Review inspection report',done:true},
+  {t:'Negotiate repairs with seller',done:true},
+  {t:'Appraisal completed',done:true},
+  {t:"Get homeowner's insurance binder",done:false},
+  {t:'Review title commitment letter',done:false},
+  {t:'Schedule final walkthrough',done:false},
+  {t:'Wire funds to title company',done:false},
+  {t:'Bring photo ID to closing',done:false},
+];
+function renderTasks(){
+  document.getElementById('tasks').innerHTML=tasks.map((t,i)=>`
+    <div class="check-row" onclick="toggle(${i})">
+      <input type="checkbox" ${t.done?'checked':''} onclick="event.stopPropagation();toggle(${i})">
+      <span class="check-label ${t.done?'done':''}">${t.t}</span>
+      <span class="pill ${t.done?'pill-done':'pill-pending'}">${t.done?'Done':'To do'}</span>
+    </div>`).join('');
+}
+function toggle(i){tasks[i].done=!tasks[i].done;renderTasks();}
+function switchTab(tab){
+  const names=['overview','checklist','timeline','contacts','docs','costs'];
+  document.querySelectorAll('.nav-tab').forEach((b,i)=>b.classList.toggle('active',names[i]===tab));
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(tab).classList.add('active');
+}
+renderTasks();
+</script>
