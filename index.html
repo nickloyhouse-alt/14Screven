@@ -4,24 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>14 Screven St NE · Home Portal</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏡</text></svg>">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f4f2;color:#1a1a1a;padding:1rem;}
 .rn{max-width:720px;margin:0 auto;}
 .hero{border-radius:16px;margin-bottom:1.5rem;overflow:hidden;position:relative;}
-.hero-img{width:100%;height:260px;object-fit:cover;object-position:center 60%;display:block;}
+.hero-img{width:100%;height:340px;object-fit:cover;object-position:center 60%;display:block;}
 .hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.45);border-radius:16px;}
 .hero-content{position:absolute;inset:0;padding:1.5rem;display:flex;flex-direction:column;justify-content:space-between;}
 .hero-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.25);border-radius:100px;padding:4px 12px;font-size:11px;color:#fff;width:fit-content;}
 .hero-title{font-size:26px;font-weight:500;color:#fff;line-height:1.2;margin-top:8px;}
 .hero-sub{font-size:12px;color:rgba(255,255,255,0.65);margin-top:4px;}
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
-.hero-stat{background:rgba(0,0,0,0.45);border:0.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:8px 10px;}
-.hero-stat-val{font-size:16px;font-weight:500;color:#fff;}
+.hero-stats{display:flex;gap:6px;justify-content:flex-start;}
+.hero-stat{background:rgba(0,0,0,0.65);border:0.5px solid rgba(255,255,255,0.15);border-radius:12px;padding:12px 15px;width:auto;}
+.hero-stat-val{font-size:21px;font-weight:500;color:#fff;}
+.hero-stat-label{font-size:10px;color:rgba(255,255,255,0.55);margin-top:2px;}
 .hero-stat-val.teal{color:#5DCAA5;}
 .hero-stat-val.orange{color:#E85D2F;}
-.hero-stat-label{font-size:10px;color:rgba(255,255,255,0.55);margin-top:1px;}
 .nav-tabs{display:flex;gap:2px;margin-bottom:1.5rem;background:#eae9e6;border-radius:10px;padding:4px;}
 .nav-tab{flex:1;padding:7px 4px;font-size:11px;text-align:center;cursor:pointer;border:none;background:none;color:#888;border-radius:8px;transition:all 0.15s;font-family:inherit;}
 .nav-tab.active{background:#fff;color:#1a1a1a;font-weight:500;border:0.5px solid #ddd;}
@@ -86,22 +87,25 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div>
-        <div class="hero-tag"><i class="ti ti-home"></i> 14 Screven St NE · Atlanta, GA</div>
-        <div class="hero-title">Your home closing,<br>under control.</div>
-        <div class="hero-sub">Est. closing date · June 28, 2026</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
+          <div class="hero-tag"><i class="ti ti-home"></i> 14 Screven St NE · Atlanta, GA</div>
+          <div class="hero-tag"><i class="ti ti-ruler"></i> 2,031 sqft</div>
+          <div class="hero-tag"><i class="ti ti-bed"></i> 4 bd</div>
+          <div class="hero-tag"><i class="ti ti-bath"></i> 3 ba</div>
+        </div>
+        <div class="hero-title" style="font-size:32px;">Welcome home, Loys.</div>
+        <div class="hero-sub">Est. closing date · June 22, 2026</div>
       </div>
       <div class="hero-stats">
-        <div class="hero-stat"><div class="hero-stat-val orange">27</div><div class="hero-stat-label">Days left</div></div>
-        <div class="hero-stat"><div class="hero-stat-val">7/12</div><div class="hero-stat-label">Tasks done</div></div>
-        <div class="hero-stat"><div class="hero-stat-val">5/8</div><div class="hero-stat-label">Docs in</div></div>
-        <div class="hero-stat"><div class="hero-stat-val teal">Cash</div><div class="hero-stat-label">Purchase</div></div>
+        <div class="hero-stat"><div class="hero-stat-val orange">21</div><div class="hero-stat-label">Days left</div></div>
+        <div class="hero-stat"><div class="hero-stat-val" style="color:#F5C842;">Pending</div><div class="hero-stat-label">Status</div></div>
       </div>
     </div>
   </div>
 
   <div class="nav-tabs">
     <button class="nav-tab active" onclick="switchTab('overview')"><i class="ti ti-layout-dashboard"></i>Overview</button>
-    <button class="nav-tab" onclick="switchTab('checklist')"><i class="ti ti-checklist"></i>Checklist</button>
+    <button class="nav-tab" onclick="switchTab('repairs')"><i class="ti ti-tool"></i>Repairs</button>
     <button class="nav-tab" onclick="switchTab('timeline')"><i class="ti ti-calendar"></i>Timeline</button>
     <button class="nav-tab" onclick="switchTab('contacts')"><i class="ti ti-users"></i>Contacts</button>
     <button class="nav-tab" onclick="switchTab('docs')"><i class="ti ti-folder"></i>Docs</button>
@@ -112,11 +116,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="sec-heading">Overview</div>
     <div class="sec-sub">Here's where things stand today.</div>
     <div class="cash-badge"><i class="ti ti-circle-check"></i> Cash purchase · No mortgage needed</div>
-    <div class="card-grid">
-      <div class="info-card"><div class="info-card-label">Purchase price</div><div class="info-card-val">$385k</div></div>
-      <div class="info-card"><div class="info-card-label">Closing costs</div><div class="info-card-val orange">$6.2k</div></div>
-      <div class="info-card"><div class="info-card-label">Total cash needed</div><div class="info-card-val teal">$391.2k</div></div>
-    </div>
     <div class="white-card">
       <div class="wc-title"><i class="ti ti-chart-line"></i>Progress tracker</div>
       <div style="font-size:12px;color:#888;margin-bottom:4px;">Closing checklist</div>
@@ -130,14 +129,25 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div class="wc-title"><i class="ti ti-alert-circle"></i>Needs attention</div>
       <div class="doc-row"><div class="doc-ico"><i class="ti ti-file-alert"></i></div><div class="doc-name">Homeowner's insurance binder</div><span class="pill pill-urgent">Urgent</span></div>
       <div class="doc-row"><div class="doc-ico"><i class="ti ti-file-dollar"></i></div><div class="doc-name">Proof of funds letter</div><span class="pill pill-urgent">Urgent</span></div>
-      <div class="doc-row"><div class="doc-ico"><i class="ti ti-walk"></i></div><div class="doc-name">Schedule final walkthrough</div><span class="pill pill-pending">Pending</span></div>
+      <div class="doc-row"><div class="doc-ico"><i class="ti ti-walk"></i></div><div class="doc-name">Final walkthrough · June 22 at 9:00 AM</div><span class="pill pill-done">Scheduled</span></div>
     </div>
   </div>
 
-  <div id="checklist" class="section">
-    <div class="sec-heading">Closing checklist</div>
-    <div class="sec-sub">Tap any item to mark it complete.</div>
-    <div class="white-card"><div id="tasks"></div></div>
+  <div id="repairs" class="section">
+    <div class="sec-heading">Repairs</div>
+    <div class="sec-sub">Track what needs to get done around the house.</div>
+    <div class="white-card">
+      <div id="repairs-list"></div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:8px;">
+      <input type="text" id="repair-input" placeholder="Add a repair..." style="flex:1;padding:8px 12px;border:0.5px solid #ddd;border-radius:8px;font-size:13px;font-family:inherit;">
+      <select id="repair-priority" style="padding:8px 10px;border:0.5px solid #ddd;border-radius:8px;font-size:13px;font-family:inherit;background:#fff;">
+        <option value="urgent">Urgent</option>
+        <option value="pending" selected>Normal</option>
+        <option value="done">Done</option>
+      </select>
+      <button onclick="addRepair()" class="teal-btn">Add</button>
+    </div>
   </div>
 
   <div id="timeline" class="section">
@@ -145,14 +155,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="sec-sub">Key milestones from offer to keys.</div>
     <div class="white-card">
       <div class="tl">
-        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">May 2, 2026</div><div class="tl-event">Offer accepted</div><div class="tl-note">Purchase price: $385,000 · Cash offer</div></div>
-        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">May 5, 2026</div><div class="tl-event">Earnest money deposited</div><div class="tl-note">$5,000 held in escrow</div></div>
-        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">May 12, 2026</div><div class="tl-event">Home inspection complete</div><div class="tl-note">3 minor repairs negotiated</div></div>
-        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">May 18, 2026</div><div class="tl-event">Appraisal completed</div><div class="tl-note">Appraised at $390,000 ✓</div></div>
-        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">May 22, 2026</div><div class="tl-event">Proof of funds submitted</div><div class="tl-note">Accepted by seller's agent</div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">June 20, 2026</div><div class="tl-event">Clear to close</div><div class="tl-note">Title search in progress</div></div>
-        <div class="tl-item"><div class="tl-dot future"></div><div class="tl-date">June 26, 2026</div><div class="tl-event">Final walkthrough</div><div class="tl-note">Not yet scheduled</div></div>
-        <div class="tl-item"><div class="tl-dot future"></div><div class="tl-date">June 28, 2026</div><div class="tl-event">Closing day</div><div class="tl-note">Title company · 10:00 AM</div></div>
+        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">May 14, 2026</div><div class="tl-event">On the market</div><div class="tl-note">14 Screven St NE listed</div></div>
+        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">May 16, 2026</div><div class="tl-event">Open house</div><div class="tl-note">First showing to the public</div></div>
+        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">May 16, 2026</div><div class="tl-event">First offer submitted</div><div class="tl-note">Cash offer placed same day</div></div>
+        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">May 18, 2026</div><div class="tl-event">Under contract</div><div class="tl-note">Offer accepted ✓</div></div>
+        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">May 20, 2026</div><div class="tl-event">Home inspection</div><div class="tl-note">Inspection complete</div></div>
+        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">May 23, 2026</div><div class="tl-event">Due diligence ended</div><div class="tl-note">Contingency period closed</div></div>
+        <div class="tl-item"><div class="tl-dot future"></div><div class="tl-date">June 22, 2026 · 9:00 AM</div><div class="tl-event">Final walkthrough</div><div class="tl-note">14 Screven St NE · Atlanta, GA</div></div>
+        <div class="tl-item"><div class="tl-dot future"></div><div class="tl-date">June 22, 2026 · 10:00 AM</div><div class="tl-event">Closing day</div><div class="tl-note">Taylor Sellers Law · 3355 Lenox Rd, Suite 1000</div></div>
       </div>
     </div>
   </div>
@@ -161,11 +171,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="sec-heading">Your team</div>
     <div class="sec-sub">Everyone you need, in one place.</div>
     <div class="contact-grid">
-      <div class="ccard"><div class="cavatar" style="background:#E6F1FB;color:#185FA5;">SR</div><div class="cname">Sarah Reynolds</div><div class="crole">Buyer's agent</div><div class="cphone">(404) 555-0192</div></div>
-      <div class="ccard"><div class="cavatar" style="background:#FAEEDA;color:#633806;">KL</div><div class="cname">Karen Liu</div><div class="crole">Title attorney</div><div class="cphone">(404) 555-0318</div></div>
-      <div class="ccard"><div class="cavatar" style="background:#FBEAF0;color:#72243E;">DP</div><div class="cname">Dave Patton</div><div class="crole">Home inspector</div><div class="cphone">(404) 555-0455</div></div>
-      <div class="ccard"><div class="cavatar" style="background:#EEEDFE;color:#3C3489;">TC</div><div class="cname">TrustTitle Co.</div><div class="crole">Title company</div><div class="cphone">(404) 555-0580</div></div>
-      <div class="ccard"><div class="cavatar" style="background:#E1F5EE;color:#085041;">AH</div><div class="cname">AllState Home</div><div class="crole">Insurance agent</div><div class="cphone">(404) 555-0631</div></div>
+      <div class="ccard"><div class="cavatar" style="background:#E6F1FB;color:#185FA5;">KW</div><div class="cname">Kate Wright</div><div class="crole">Realtor · Main</div><div class="cphone">+1 (678) 772-8519</div></div>
+      <div class="ccard"><div class="cavatar" style="background:#E1F5EE;color:#085041;">SS</div><div class="cname">Sarah Strohschein</div><div class="crole">Realtor · Backup</div><div class="cphone">+1 (470) 891-9956</div></div>
+      <div class="ccard"><div class="cavatar" style="background:#EEEDFE;color:#3C3489;">TS</div><div class="cname">Taylor Sellers Law</div><div class="crole">Closing attorney</div><div class="cphone">3355 Lenox Rd, Suite 1000</div></div>
+      <div class="ccard"><div class="cavatar" style="background:#FAEEDA;color:#633806;">DL</div><div class="cname">Duane Longenecker</div><div class="crole">Inspector · Cingo Home</div><div class="cphone"></div></div>
+      <div class="ccard"><div class="cavatar" style="background:#FAECE7;color:#712B13;">WG</div><div class="cname">Wyatt Graff</div><div class="crole">Roofer · Reset Roofing</div><div class="cphone">+1 (678) 679-7939</div></div>
+      <div class="ccard"><div class="cavatar" style="background:#E1F5EE;color:#085041;">N</div><div class="cname">Nick</div><div class="crole">HVAC · Seasons Choice</div><div class="cphone">(678) 316-3005</div></div>
     </div>
   </div>
 
@@ -187,57 +198,66 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <div id="costs" class="section">
     <div class="sec-heading">Closing costs</div>
     <div class="sec-sub">Cash purchase — no loan fees or mortgage costs.</div>
-    <div class="cash-badge"><i class="ti ti-circle-check"></i> Saving ~$4,000+ vs. financed purchase</div>
-    <div class="card-grid">
-      <div class="info-card"><div class="info-card-label">Purchase price</div><div class="info-card-val">$385k</div></div>
-      <div class="info-card"><div class="info-card-label">Closing costs</div><div class="info-card-val orange">$6.2k</div></div>
-      <div class="info-card"><div class="info-card-label">Total cash needed</div><div class="info-card-val teal">$391.2k</div></div>
-    </div>
+    <div class="cash-badge"><i class="ti ti-circle-check"></i> Cash purchase · No loan fees</div>
     <div class="white-card">
       <div class="wc-title"><i class="ti ti-receipt"></i>Cost breakdown</div>
-      <div class="cost-row"><span class="cost-lbl">Title insurance</span><span>$1,800</span></div>
-      <div class="cost-row"><span class="cost-lbl">Attorney fees</span><span>$900</span></div>
-      <div class="cost-row"><span class="cost-lbl">Home inspection</span><span>$425</span></div>
-      <div class="cost-row"><span class="cost-lbl">Appraisal fee</span><span>$550</span></div>
-      <div class="cost-row"><span class="cost-lbl">Homeowner's insurance (1yr)</span><span>$1,200</span></div>
-      <div class="cost-row"><span class="cost-lbl">Recording fees</span><span>$150</span></div>
-      <div class="cost-row"><span class="cost-lbl">Miscellaneous</span><span>$375</span></div>
-      <div class="cost-row"><span style="font-weight:500;">Total closing costs</span><span style="color:#1D9E75;font-weight:500;">$6,200</span></div>
+      <div class="cost-row"><span class="cost-lbl">Title insurance</span><span>Provided at closing</span></div>
+      <div class="cost-row"><span class="cost-lbl">Attorney fees</span><span>Provided at closing</span></div>
+      <div class="cost-row"><span class="cost-lbl">Home inspection</span><span>Paid</span></div>
+      <div class="cost-row"><span class="cost-lbl">Appraisal fee</span><span>Paid</span></div>
+      <div class="cost-row"><span class="cost-lbl">Homeowner's insurance (1yr)</span><span>In progress</span></div>
+      <div class="cost-row"><span class="cost-lbl">Recording fees</span><span>Provided at closing</span></div>
+      <div class="cost-row"><span class="cost-lbl">Miscellaneous</span><span>TBD</span></div>
     </div>
   </div>
 </div>
 
 <script>
-const tasks=[
-  {t:'Submit purchase agreement',done:true},
-  {t:'Deposit earnest money',done:true},
-  {t:'Submit proof of funds',done:true},
-  {t:'Complete home inspection',done:true},
-  {t:'Review inspection report',done:true},
-  {t:'Negotiate repairs with seller',done:true},
-  {t:'Appraisal completed',done:true},
-  {t:"Get homeowner's insurance binder",done:false},
-  {t:'Review title commitment letter',done:false},
-  {t:'Schedule final walkthrough',done:false},
-  {t:'Wire funds to title company',done:false},
-  {t:'Bring photo ID to closing',done:false},
+const repairs=[
+  {t:'HVAC · Install 8" combustion air / fresh air intake from outside for gas furnace',p:'pending'},
+  {t:'HVAC · Install two 6" supply lines in attic to balance temperature between spray-foam area and main floor',p:'pending'},
+  {t:'HVAC · Service mini split — may be low on refrigerant',p:'urgent'},
+  {t:'HVAC · Inspect attic furnace coil seal — possible tamper and coil leak, verify and reseal',p:'urgent'},
+  {t:'Roof · Seal multiple exposed, rusty nails on penetrations and ridges',p:'pending'},
+  {t:'Roof · Seal low nail on front right eave (below chimney)',p:'pending'},
+  {t:'Roof · Seal cracks around chimney where counterflashing meets the brick/paint',p:'pending'},
+  {t:'Roof · Seal lowest nail in step flashing on inner side of chimney',p:'pending'},
 ];
-function renderTasks(){
-  document.getElementById('tasks').innerHTML=tasks.map((t,i)=>`
-    <div class="check-row" onclick="toggle(${i})">
-      <input type="checkbox" ${t.done?'checked':''} onclick="event.stopPropagation();toggle(${i})">
-      <span class="check-label ${t.done?'done':''}">${t.t}</span>
-      <span class="pill ${t.done?'pill-done':'pill-pending'}">${t.done?'Done':'To do'}</span>
+function renderRepairs(){
+  const el=document.getElementById('repairs-list');
+  if(!el)return;
+  if(repairs.length===0){el.innerHTML='<div style="font-size:13px;color:#aaa;padding:8px 0;">No repairs added yet.</div>';return;}
+  el.innerHTML=repairs.map((r,i)=>`
+    <div class="check-row">
+      <div class="doc-ico" style="flex-shrink:0;"><i class="ti ti-tool"></i></div>
+      <span class="check-label ${r.p==='done'?'done':''}" style="flex:1;">${r.t}</span>
+      <select onchange="changeStatus(${i},this.value)" style="font-size:11px;border:0.5px solid #ddd;border-radius:6px;padding:2px 6px;font-family:inherit;background:#fff;margin-right:6px;">
+        <option value="urgent" ${r.p==='urgent'?'selected':''}>Urgent</option>
+        <option value="pending" ${r.p==='pending'?'selected':''}>Normal</option>
+        <option value="done" ${r.p==='done'?'selected':''}>Done</option>
+      </select>
+      <span class="pill ${r.p==='done'?'pill-done':r.p==='urgent'?'pill-urgent':'pill-pending'}">${r.p==='done'?'Done':r.p==='urgent'?'Urgent':'Normal'}</span>
+      <button onclick="removeRepair(${i})" style="background:none;border:none;cursor:pointer;color:#ccc;font-size:16px;margin-left:6px;">×</button>
     </div>`).join('');
 }
-function toggle(i){tasks[i].done=!tasks[i].done;renderTasks();}
+function addRepair(){
+  const input=document.getElementById('repair-input');
+  const priority=document.getElementById('repair-priority').value;
+  if(!input.value.trim())return;
+  repairs.push({t:input.value.trim(),p:priority});
+  input.value='';
+  renderRepairs();
+}
+function removeRepair(i){repairs.splice(i,1);renderRepairs();}
+function changeStatus(i,val){repairs[i].p=val;renderRepairs();}
+document.getElementById('repair-input')?.addEventListener('keydown',e=>{if(e.key==='Enter')addRepair();});
 function switchTab(tab){
-  const names=['overview','checklist','timeline','contacts','docs','costs'];
+  const names=['overview','repairs','timeline','contacts','docs','costs'];
   document.querySelectorAll('.nav-tab').forEach((b,i)=>b.classList.toggle('active',names[i]===tab));
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.getElementById(tab).classList.add('active');
 }
-renderTasks();
+renderRepairs();
 </script>
 </body>
 </html>
